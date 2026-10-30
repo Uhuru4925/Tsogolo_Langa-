@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Testing
+coverage/
+
+# Production
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment variables (never commit secrets)
+.env
+.env*.local
+.env.development
+.env.production
+
+# Firebase service account keys (never commit secrets)
+*serviceAccountKey*.json
+firebase-adminsdk*.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Vercel
+.vercel
+
+# Drizzle
+drizzle/meta/

@@ -1,0 +1,17 @@
+{
+  "name": "MalawiGuide - MSCE Career Guidance",
+  "short_name": "MalawiGuide",
+  "description": "Free career guidance for Malawian secondary school students",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a3c6e",
+  "theme_color": "#1a3c6e",
+  "icons": [
+    {
+      "src": "/images/og-cover.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
