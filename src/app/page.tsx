@@ -109,7 +109,7 @@ export default function HomePage() {
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
 
       {/* Header */}
-      <header className="relative z-50 flex items-center justify-between px-6 py-5 max-w-6xl mx-auto">
+      <header className="relative z-50 mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-3 px-4 py-4 sm:px-6 sm:py-5">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg">
             <BookOpen className="w-5 h-5 text-[#1a3c6e]" />
@@ -120,13 +120,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Language toggle */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 rounded-xl bg-white/10 p-1">
-            <Globe className="ml-2 h-4 w-4 text-white/70" />
+        <div className="order-last flex basis-full items-center justify-center gap-3 sm:order-none sm:ml-auto sm:basis-auto">
+          {/* Language toggle */}
+          <div className="flex items-center gap-1 rounded-xl bg-white/10 p-1 sm:gap-2">
+            <Globe className="ml-1 hidden h-4 w-4 text-white/70 sm:ml-2 sm:block" />
             <button
               onClick={() => setLang("en")}
-              className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-all ${
+              className={`rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all sm:px-3 sm:text-sm ${
                 lang === "en" ? "bg-white text-[#1a3c6e]" : "text-white/70 hover:text-white"
               }`}
             >
@@ -134,7 +134,7 @@ export default function HomePage() {
             </button>
             <button
               onClick={() => setLang("ny")}
-              className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-all ${
+              className={`rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all sm:px-3 sm:text-sm ${
                 lang === "ny" ? "bg-white text-[#1a3c6e]" : "text-white/70 hover:text-white"
               }`}
             >

@@ -8,6 +8,7 @@ import { getFirebaseAuth, getFirebaseClientConfigError } from "@/lib/firebase/cl
 
 type PositionResponse = {
   position: { rank: number; score: number; totalResults: number } | null;
+  positionError?: string;
   error?: string;
 };
 
@@ -57,7 +58,8 @@ export function LeaderboardPosition() {
                 setMessage(
                   data.position
                     ? ""
-                    : "Complete a quiz with this account to get your leaderboard position.",
+                    : data.positionError ??
+                      "Complete a quiz with this account to get your leaderboard position.",
                 );
               } catch (error) {
                 console.error("Could not load learner leaderboard position:", error);

@@ -67,6 +67,30 @@ export function isFirebaseConfigured(): boolean {
   return readFirebaseCredentials() !== null;
 }
 
+export function getFirebaseProjectStatus() {
+  const credentials = readFirebaseCredentials();
+  const adminProjectId = credentials?.projectId ?? null;
+  const clientProjectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ?? null;
+  return {
+    adminProjectId,
+    clientProjectId,
+    projectsMatch:
+      adminProjectId !== null &&
+      clientProjectId !== null &&
+      adminProjectId === clientProjectId,
+  };
+}
+
+export function isFirebaseAuthenticationError(error: unknown): boolean {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    typeof error.code === "string" &&
+    error.code.startsWith("auth/")
+  );
+}
+
 const globalForFirebase = globalThis as typeof globalThis & {
   __malawiGuideFirebaseApp?: App;
   __malawiGuideFirestore?: Firestore;

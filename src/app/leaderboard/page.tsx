@@ -19,7 +19,7 @@ async function getLeaderboard(): Promise<{
     console.error("Leaderboard unavailable:", error);
     return {
       results: [],
-      error: "The leaderboard could not connect to the server data store. Configure Firebase Admin credentials and confirm the connection on the Firebase setup page.",
+      error: "The leaderboard could not connect to the server data store. Check /api/health and confirm Firebase Admin credentials are configured in Vercel.",
     };
   }
 }

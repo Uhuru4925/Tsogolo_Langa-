@@ -88,6 +88,12 @@ npm run start
    healthy. The app creates its `students`, `quizSessions`, `results` and
    supporting collections automatically after the first profile or quiz save.
 
+For Vercel deployments, add the Firebase web configuration variables and the
+server-only `FIREBASE_SERVICE_ACCOUNT` JSON under **Project Settings → Environment
+Variables** for every environment you use, then redeploy. `.env.local` is not
+uploaded to Vercel. Verify the deployment at `/api/health`; it should report
+Firestore as the active, healthy backend.
+
 Never expose or commit the service-account private key. Firestore collections
 are managed automatically by the app; server-side Admin SDK writes bypass
 Firestore Security Rules.

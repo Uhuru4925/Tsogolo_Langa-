@@ -7,12 +7,18 @@ export { isFirebaseConfigured } from "./firebase-app";
 
 let cached: DataStore | null = null;
 
+export class StorageUnavailableError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "StorageUnavailableError";
+  }
+}
+
 /**
  * Returns the active data store.
  *
  * Firebase Firestore is used whenever credentials are present.
- * Otherwise the app transparently falls back to PostgreSQL so nothing breaks
- * before the keys are added.
+ * PostgreSQL is used as a fallback only when DATABASE_URL is configured.
  */
 export async function getStore(): Promise<DataStore> {
   if (cached) return cached;
@@ -31,8 +37,22 @@ export async function getStore(): Promise<DataStore> {
     }
   }
 
+  if (!process.env.DATABASE_URL) {
+    throw new StorageUnavailableError(
+      isFirebaseConfigured()
+        ? "Firebase Admin credentials are set, but the server could not connect to Firestore. Check the Vercel server environment variables and Firebase service-account access."
+        : "No server database is configured. Add FIREBASE_SERVICE_ACCOUNT (Firebase Admin service-account JSON) to the Vercel environment, then redeploy.",
+    );
+  }
+
   const { PostgresStore } = await import("./postgres-store");
-  cached = new PostgresStore();
+  const postgres = new PostgresStore();
+  if (!(await postgres.ping())) {
+    throw new StorageUnavailableError(
+      "The configured PostgreSQL database could not be reached. Check DATABASE_URL and the database network access.",
+    );
+  }
+  cached = postgres;
   return cached;
 }
 

@@ -440,8 +440,16 @@ export default function QuizStartPage() {
               </div>
             </div>
           ) : (
-            <div className="p-8 text-center text-sm text-slate-600">
-              {error || "We could not load your learner profile."}
+            <div className="space-y-4 p-8 text-center text-sm text-slate-600">
+              <p role="alert" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-left text-amber-950">
+                {error || "We could not load your learner profile."}
+              </p>
+              <p className="text-left">
+                If this happens on the deployed site, check the server database status and Firebase Admin settings.
+              </p>
+              <Link href="/api/health" className="inline-flex font-semibold text-[#1a3c6e] underline">
+                Check server connection
+              </Link>
             </div>
           )}
         </section>

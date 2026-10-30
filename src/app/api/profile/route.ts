@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getStore } from "@/lib/storage";
-import { verifyFirebaseIdToken } from "@/lib/storage/firebase-app";
+import { getStore, StorageUnavailableError } from "@/lib/storage";
+import {
+  isFirebaseAuthenticationError,
+  verifyFirebaseIdToken,
+} from "@/lib/storage/firebase-app";
 import { isStudentSubject } from "@/lib/student-subjects";
 
 export const dynamic = "force-dynamic";
@@ -28,6 +31,15 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ profile, history, inProgressSessions });
   } catch (error) {
     console.error("Could not load student profile:", error);
+    if (isFirebaseAuthenticationError(error)) {
+      return NextResponse.json(
+        { error: "Your sign-in could not be verified. Sign out and sign in again." },
+        { status: 401 },
+      );
+    }
+    if (error instanceof StorageUnavailableError) {
+      return NextResponse.json({ error: error.message }, { status: 503 });
+    }
     return NextResponse.json({ error: "Could not load your profile" }, { status: 500 });
   }
 }
@@ -85,6 +97,15 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ profile });
   } catch (error) {
     console.error("Could not save student profile:", error);
+    if (isFirebaseAuthenticationError(error)) {
+      return NextResponse.json(
+        { error: "Your sign-in could not be verified. Sign out and sign in again." },
+        { status: 401 },
+      );
+    }
+    if (error instanceof StorageUnavailableError) {
+      return NextResponse.json({ error: error.message }, { status: 503 });
+    }
     return NextResponse.json({ error: "Could not save your profile" }, { status: 500 });
   }
 }
