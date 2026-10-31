@@ -178,7 +178,7 @@ export default function LoginPage() {
               {mode === "signup" ? "Create your account" : "Welcome back"}
             </h1>
             <p className="mt-2 text-sm text-white/75">
-              Save your progress and explore your future with MalawiGuide.
+              Save your progress and explore your future with Tsogolo Langa.
             </p>
             <div className="mt-5 flex justify-center gap-1" aria-hidden="true">
               <div className="h-1 w-10 rounded-full bg-black" />
@@ -314,7 +314,7 @@ export default function LoginPage() {
                 </form>
 
                 <p className="text-center text-sm text-slate-600">
-                  {mode === "signup" ? "Already have an account?" : "New to MalawiGuide?"}{" "}
+                  {mode === "signup" ? "Already have an account?" : "New to Tsogolo Langa?"}{" "}
                   <button
                     type="button"
                     onClick={() => {

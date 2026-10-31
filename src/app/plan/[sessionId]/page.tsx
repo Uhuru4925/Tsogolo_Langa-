@@ -15,7 +15,7 @@ import { PlanTracker } from "@/components/plan-tracker";
 import { SubjectPracticeCard } from "@/components/subject-practice-card";
 import { getStore } from "@/lib/storage";
 import { STRENGTH_META, analyseSession, suggestedFocusSubjects } from "@/lib/study/analyse";
-import { buildStudyPlan, weeklyTimetable } from "@/lib/study/planner";
+import { buildStudyPlan } from "@/lib/study/planner";
 import { SYLLABUS, SYLLABUS_BY_SUBJECT } from "@/lib/study/syllabus";
 
 export const dynamic = "force-dynamic";
@@ -70,10 +70,6 @@ export default async function StudyPlanPage({
         prioritySubjects: existingPlan.prioritySubjects,
       })
     : null;
-
-  const timetable = existingPlan
-    ? weeklyTimetable(existingPlan.hoursPerWeek, existingPlan.subjects)
-    : [];
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -200,36 +196,6 @@ export default async function StudyPlanPage({
                 weeks={plan.weeks}
                 initialCompleted={existingPlan.completedTasks}
               />
-            </section>
-
-            {/* Weekly routine */}
-            <section>
-              <h2 className="mb-1 text-xl font-bold text-slate-800">Suggested weekly routine</h2>
-              <p className="mb-4 text-sm text-slate-600">
-                Copy this into the front of your exercise book and stick to it.
-              </p>
-              <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
-                {timetable.map((row, index) => (
-                  <div
-                    key={`${row.day}-${index}`}
-                    className={`grid grid-cols-[100px_1fr_auto] items-center gap-3 px-4 py-3 text-sm ${
-                      index % 2 === 0 ? "bg-white" : "bg-slate-50"
-                    }`}
-                  >
-                    <span className="font-semibold text-slate-700">{row.day}</span>
-                    <span className="text-slate-500">{row.slot}</span>
-                    <span
-                      className={`rounded-lg px-2.5 py-1 text-xs font-bold ${
-                        row.subject === "Rest"
-                          ? "bg-slate-100 text-slate-500"
-                          : "bg-[#1a3c6e]/10 text-[#1a3c6e]"
-                      }`}
-                    >
-                      {row.subject}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </section>
 
             {/* Exam tips for chosen subjects */}

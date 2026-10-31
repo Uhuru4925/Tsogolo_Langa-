@@ -41,9 +41,9 @@ function stripTrailingSlash(value: string): string {
 }
 
 export const SITE = {
-  name: "MalawiGuide",
-  shortName: "MalawiGuide",
-  title: "MalawiGuide — MSCE Career Guidance for Malawi Students",
+  name: "Tsogolo Langa",
+  shortName: "Tsogolo Langa",
+  title: "Tsogolo Langa — MSCE Career Guidance for Malawi Students",
   description:
     "Free career guidance for Malawian secondary school students. Take a 30-question MSCE-aligned quiz across three phases and find out whether you are stronger in Sciences or Humanities, then explore careers at KUHeS, MUBAS, MUST, LUANAR, UNIMA and MZUNI.",
   keywords: [

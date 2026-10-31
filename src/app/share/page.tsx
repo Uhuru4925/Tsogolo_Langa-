@@ -10,14 +10,14 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Share this site",
   description:
-    "Get the link and QR code for MalawiGuide so students, teachers and parents can open the MSCE career guidance quiz on any phone.",
+    "Get the Tsogolo Langa link and QR code so students, teachers and parents can open the MSCE career guidance quiz on any phone.",
 };
 
 export default async function SharePage() {
   const url = await getRequestUrl();
   const quizUrl = `${url}/quiz`;
 
-  const qrDataUrl = await QRCode.toDataURL(url, {
+  const qrDataUrl = await QRCode.toDataURL(quizUrl, {
     width: 520,
     margin: 1,
     color: { dark: "#1a3c6e", light: "#ffffff" },
@@ -43,7 +43,7 @@ export default async function SharePage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">
               <Link2 className="h-3.5 w-3.5" /> Site address
             </div>
-            <h1 className="mt-3 text-2xl font-bold md:text-3xl">Share MalawiGuide</h1>
+            <h1 className="mt-3 text-2xl font-bold md:text-3xl">Share Tsogolo Langa</h1>
             <p className="mt-2 max-w-xl text-sm text-white/75">
               This is the live web address of the system. Any student, teacher or parent can open it
               on a phone, tablet or computer — no installation needed.
@@ -96,7 +96,7 @@ export default async function SharePage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={qrDataUrl}
-                  alt={`QR code linking to ${url}`}
+                  alt={`QR code linking directly to ${quizUrl}`}
                   width={220}
                   height={220}
                   className="h-[220px] w-[220px]"
@@ -112,20 +112,6 @@ export default async function SharePage() {
             </div>
           </div>
 
-          <div className="border-t border-slate-200 bg-slate-50 px-6 py-5 text-xs leading-relaxed text-slate-500 md:px-8">
-            <p className="font-semibold text-slate-600">Using your own domain later?</p>
-            <p className="mt-1">
-              Set the environment variable{" "}
-              <code className="rounded bg-slate-200 px-1.5 py-0.5 font-mono text-[11px] text-slate-700">
-                NEXT_PUBLIC_SITE_URL
-              </code>{" "}
-              to something like{" "}
-              <code className="rounded bg-slate-200 px-1.5 py-0.5 font-mono text-[11px] text-slate-700">
-                https://malawiguide.mw
-              </code>{" "}
-              and every link, sitemap entry and social preview will follow it automatically.
-            </p>
-          </div>
         </div>
       </div>
     </div>

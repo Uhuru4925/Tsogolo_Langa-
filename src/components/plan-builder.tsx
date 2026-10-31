@@ -62,9 +62,7 @@ export function PlanBuilder({
         }),
       });
       if (!res.ok) throw new Error("failed");
-      // Drop any ?rebuild=1 flag so the finished plan is shown.
-      router.push(`/plan/${sessionId}`);
-      router.refresh();
+      router.push(`/study-plans/${sessionId}`);
     } catch {
       setError("Could not build your plan. Please try again.");
       setBusy(false);

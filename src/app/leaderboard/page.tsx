@@ -200,12 +200,12 @@ export default async function LeaderboardPage() {
               </div>
               <div className="divide-y divide-slate-50">
                 {leaderboard.map((r, i) => (
-                  <div key={r.id} className="flex items-center gap-4 px-5 py-4 hover:bg-slate-50 transition-colors">
-                    <div className="flex-shrink-0 flex items-center justify-center w-10">
+                  <div key={r.id} className="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-x-2 gap-y-1 px-3 py-4 transition-colors hover:bg-slate-50 sm:flex sm:gap-4 sm:px-5">
+                    <div className="row-span-2 flex w-8 flex-shrink-0 items-center justify-center sm:row-span-1 sm:w-10">
                       {rankBadge(i + 1)}
                     </div>
 
-                    <div className="flex-1 min-w-0">
+                    <div className="col-start-2 row-start-1 min-w-0 sm:flex-1">
                       <p className="font-bold text-slate-800 text-sm truncate">{r.studentName}</p>
                       <p className="text-slate-400 text-xs truncate">
                         {r.school || "School not specified"}
@@ -213,9 +213,17 @@ export default async function LeaderboardPage() {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3 flex-shrink-0">
+                    <span
+                      className={`col-start-2 row-start-2 w-fit max-w-full truncate rounded-full border px-2 py-0.5 text-[10px] font-semibold sm:hidden ${
+                        categoryColors[r.category || "Mixed"] || categoryColors.Mixed
+                      }`}
+                    >
+                      {r.category || "Mixed"}
+                    </span>
+
+                    <div className="col-start-3 row-span-2 flex flex-shrink-0 items-center gap-2 sm:row-span-1 sm:gap-3">
                       <span
-                        className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${
+                        className={`hidden rounded-full border px-2.5 py-1 text-xs font-semibold sm:inline-flex ${
                           categoryColors[r.category || "Mixed"] || categoryColors.Mixed
                         }`}
                       >
@@ -235,13 +243,16 @@ export default async function LeaderboardPage() {
                         <p className="text-xs font-bold text-amber-600">{r.humanitiesScore}%</p>
                       </div>
 
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-lg ${gradeColors[r.grade || "F"] || gradeColors.F}`}>
+                      <div className={`flex h-9 w-9 items-center justify-center rounded-xl text-base font-extrabold sm:h-10 sm:w-10 sm:text-lg ${gradeColors[r.grade || "F"] || gradeColors.F}`}>
                         {r.grade}
                       </div>
 
-                      <div className="text-right w-14">
-                        <p className="font-extrabold text-slate-800 text-lg leading-none">
+                      <div className="w-12 text-right sm:w-14">
+                        <p className="text-base font-extrabold leading-none text-slate-800 sm:text-lg">
                           {r.totalScore}%
+                        </p>
+                        <p className="mt-1 whitespace-nowrap text-[9px] text-slate-400 sm:hidden">
+                          S {r.scienceScore}% · H {r.humanitiesScore}%
                         </p>
                       </div>
                     </div>

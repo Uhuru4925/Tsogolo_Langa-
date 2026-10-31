@@ -199,7 +199,7 @@ export async function GET(req: NextRequest) {
     // ── Footers ──
     const pages = pdf.getPages();
     pages.forEach((p, i) => {
-      p.drawText(clean(`MalawiGuide - MSCE practice paper  |  Page ${i + 1} of ${pages.length}`), {
+      p.drawText(clean(`Tsogolo Langa - MSCE practice paper  |  Page ${i + 1} of ${pages.length}`), {
         x: MARGIN, y: 28, size: 8, font: regular, color: GREY,
       });
     });

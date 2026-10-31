@@ -238,30 +238,3 @@ export function buildStudyPlan(rawInput: PlanInput): StudyPlanBlueprint {
     generatedAt: new Date(),
   };
 }
-
-/** A simple weekly timetable suggestion the student can copy into an exercise book. */
-export function weeklyTimetable(hoursPerWeek: number, subjects: string[]): {
-  day: string;
-  slot: string;
-  subject: string;
-}[] {
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const perDay = Math.max(1, Math.round(hoursPerWeek / days.length));
-  const rows: { day: string; slot: string; subject: string }[] = [];
-  let index = 0;
-
-  for (const day of days) {
-    for (let slot = 0; slot < perDay; slot++) {
-      const subject = subjects[index % subjects.length] ?? "Revision";
-      rows.push({
-        day,
-        slot: slot === 0 ? "After school (1 hr)" : "Evening (1 hr)",
-        subject,
-      });
-      index += 1;
-    }
-  }
-
-  rows.push({ day: "Sunday", slot: "Rest / light review", subject: "Rest" });
-  return rows;
-}

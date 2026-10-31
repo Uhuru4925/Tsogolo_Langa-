@@ -379,7 +379,7 @@ export default async function ResultsPage({
 
         {/* Study plan call to action */}
         <div className="bg-gradient-to-br from-[#1a3c6e] to-[#1e5799] rounded-3xl p-6 text-white">
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="min-w-0 flex-1">
               <h2 className="mb-1.5 flex items-center gap-2 font-bold text-lg">
                 <CalendarDays aria-hidden="true" className="h-5 w-5" />
@@ -392,7 +392,7 @@ export default async function ResultsPage({
             </div>
             <Link
               href={`/plan/${sessionId}`}
-              className="inline-flex items-center gap-2 bg-white text-[#1a3c6e] font-bold px-6 py-3.5 rounded-xl hover:shadow-lg transition-all shrink-0"
+              className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-bold text-[#1a3c6e] transition-all hover:shadow-lg sm:w-auto"
             >
               Plan my studies <ChevronRight className="w-4 h-4" />
             </Link>

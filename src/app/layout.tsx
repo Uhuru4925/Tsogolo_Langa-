@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: "/images/og-cover.jpg",
           width: 1200,
           height: 630,
-          alt: "MalawiGuide — MSCE Career Guidance",
+          alt: "Tsogolo Langa — MSCE Career Guidance",
         },
       ],
     },

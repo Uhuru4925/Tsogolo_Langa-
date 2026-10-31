@@ -115,12 +115,12 @@ export default function HomePage() {
             <BookOpen className="w-5 h-5 text-[#1a3c6e]" />
           </div>
           <div>
-            <p className="text-white font-bold text-sm leading-none">MalawiGuide</p>
+            <p className="text-white font-bold text-sm leading-none">Tsogolo Langa</p>
             <p className="text-white/60 text-xs">MSCE Career System</p>
           </div>
         </div>
 
-        <div className="order-last flex basis-full items-center justify-center gap-3 sm:order-none sm:ml-auto sm:basis-auto">
+        <div className="order-last flex basis-full justify-center sm:order-none sm:ml-auto sm:basis-auto">
           {/* Language toggle */}
           <div className="flex items-center gap-1 rounded-xl bg-white/10 p-1 sm:gap-2">
             <Globe className="ml-1 hidden h-4 w-4 text-white/70 sm:ml-2 sm:block" />
@@ -141,6 +141,8 @@ export default function HomePage() {
               Chichewa
             </button>
           </div>
+        </div>
+        <div className="ml-auto shrink-0 sm:order-last sm:ml-3">
           <AuthProfileButton onUserChange={handleAuthUserChange} />
         </div>
       </header>

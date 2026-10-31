@@ -220,8 +220,8 @@ export default function PapersPage() {
           <Info className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
           <p className="text-sm leading-relaxed text-amber-900">
             <strong>Please note:</strong> the practice papers on this page are written by
-            MalawiGuide in the MSCE style for revision purposes. They are not actual MANEB
-            examination papers, and MalawiGuide is not affiliated with MANEB. Use them alongside
+            Tsogolo Langa in the MSCE style for revision purposes. They are not actual MANEB
+            examination papers, and Tsogolo Langa is not affiliated with MANEB. Use them alongside
             genuine past papers from your school or the Board.
           </p>
         </div>

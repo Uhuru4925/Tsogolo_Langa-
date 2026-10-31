@@ -20,7 +20,7 @@ export function CopyLink({ url }: { url: string }) {
     if (typeof navigator !== "undefined" && "share" in navigator) {
       try {
         await navigator.share({
-          title: "MalawiGuide — MSCE Career Guidance",
+          title: "Tsogolo Langa — MSCE Career Guidance",
           text: "Find out if you are stronger in Sciences or Humanities after MSCE.",
           url,
         });

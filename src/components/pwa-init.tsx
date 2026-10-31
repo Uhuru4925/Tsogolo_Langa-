@@ -15,22 +15,6 @@ export function PWAInit() {
       initSync();
     });
 
-    // Register service worker update listener
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.ready.then((registration) => {
-        registration.addEventListener("updatefound", () => {
-          const newWorker = registration.installing;
-          if (!newWorker) return;
-
-          newWorker.addEventListener("statechange", () => {
-            if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
-              // New content available - show gentle notification
-              console.log("New version available. Refresh to update.");
-            }
-          });
-        });
-      });
-    }
   }, []);
 
   return null;

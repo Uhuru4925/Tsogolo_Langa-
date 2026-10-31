@@ -1,4 +1,4 @@
-# MalawiGuide — MSCE Career Guidance System
+# Tsogolo Langa — MSCE Career Guidance System
 
 A free, bilingual (English / Chichewa) web app that helps Malawian secondary
 school students discover whether they are stronger in **Sciences** or
